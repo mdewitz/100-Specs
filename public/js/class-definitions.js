@@ -573,7 +573,22 @@ Pen.prototype.write = function(message){
  *   grow
  * 
  */
+function Garden(plantTotal, isWatered){
+  this.plantsTotal = plantTotal;
+  this.isWatered = false;
+}
 
+Garden.prototype.water = function(){
+  this.plantsTotal += 1;
+  this.isWatered =true;
+  return true;
+};
+
+Garden.prototype.grow = function(){
+  this.plantsTotal += 1;
+  this.isWatered = true;
+  return false;
+};
 
 /* Step 32
  *
@@ -626,7 +641,19 @@ Pen.prototype.write = function(message){
  *
  */
 
+function PrincessLeia (name, money, age, gender, isInTrouble){
+  this.isInTrouble = null;
+  Person.call(this, name,money,age,gender);
+}
+PrincessLeia.prototype = Object.create(Person.prototype,{
+  constructor: {
+    value: Person
+  }
+});
 
+PrincessLeia.prototype.shootsGun = function(){
+
+}
 /* Step 34
  *
  * Define a class named "Stapler" with properties "color"
