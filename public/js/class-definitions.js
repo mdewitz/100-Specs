@@ -215,11 +215,25 @@ var DNA = ["nucleatides", "guanine", "adenine", "thymine", "cytosine"];
  *
  */
 var laptopCosts = {
-  "MacBook": 1500, 
-  "AlienWare": 2500,
-  "HP": 499,
-  "Surface": 320,
+  MacBook: 1500,
+  AlienWare: 2500,
+  HP: 499,
+  Surface: 320
 };
+
+//   "MacBook": {
+//     value: 1500 
+//   },
+//   "AlienWare": {
+//     value:2500
+//   },
+//   "HP": {
+//     value: 499
+//   },
+//   "Surface": {
+//     value: 320
+//   }
+// };
 
 /* Step 17
  *
@@ -343,13 +357,13 @@ var drink = function(beerName){
   if(Object.keys(beers) !== beerName || beerName === undefined || beerName === null){
     //source: http://stackoverflow.com/questions/675231/how-do-i-access-properties-of-a-javascript-object-if-i-dont-know-the-names
     return false;
-  }if(Object.keys(beers.beerName) !== object){
-    return "This " + beerName + " is " + beers[beerName];
+  // }if(Object.keys(beers.beerName) !== object){
+  //   return "This " + beerName + " is " + beers[beerName];
   
   }else{
-    for (var key in beers){
-      if (beerName.hasOwnProperty(key)){
-        console.log("This " + beerName + " is " + Object.getOwnPropertyNames(beers.beerName));
+    // for (var key in beers){
+    //   if (beerName.hasOwnProperty(key)){
+        return("This " + beerName + " is " + beers[beerName]);
       // }
 //     }
 //   }
@@ -361,8 +375,8 @@ var drink = function(beerName){
   // for(var i = 0; i < beers.beerName.length; i++){
   //   var description = beers.beerName(i);
   //   return "This " + beerName + " is " + description;
-  }
-} 
+//   }
+// } 
   }
 };
 
@@ -382,7 +396,7 @@ var browseURL = function(browser){
   return false;
  }else{
   // for (var key in browser){
-    return browsers.browser;
+    return browsers[browser];
   // }
  }
 };
@@ -423,7 +437,19 @@ var listLivingOrgClass = function(){
  * @return {String}
  *
  */
-
+var favoritePlanet = function(currPlanet){
+  var temp = planets;
+  if(planets.indexOf(currPlanet) === -1  || currPlanet === undefined){
+    console.log(currPlanet + " is not a planet!");
+    return currPlanet + " is not a planet!";
+  }else{
+/*    temp.splice(temp.indexOf(currPlanet),1);
+    var newPlanet = temp[Math.floor(Math.random()*temp.length)];*/
+    var newPlanet = planets[Math.floor(Math.random()*planets.length)];
+    console.log("I\'m from " + currPlanet + " but I wish I could go to " + newPlanet);
+    return ("I\'m from " + currPlanet + ", but I wish I could go to " + newPlanet);
+  }
+};
 
 /* Step 27
  *
