@@ -216,10 +216,10 @@ var DNA = ["nucleatides", "guanine", "adenine", "thymine", "cytosine"];
  */
 var laptopCosts = {
 
-  "MacBook": 1500,
-  "Alienware": 2500,
-  "HP": 499,
-  "Surface": 320
+  MacBook: 1500,
+  Alienware: 2500,
+  HP: 499,
+  Surface: 320
 };
 
 //   "MacBook": {
@@ -496,10 +496,10 @@ Person.prototype.earnMoney = function(mulah){
  *
  */
 var purchaseLaptop = function(laptop){
-  if(Object.keys(laptopCosts) !== laptop || laptop === undefined){
-    return -1;
+  if(laptopCosts.hasOwnProperty(laptop)){
+    return laptopCosts[laptop].toString();
   }else{
-    return laptopCosts[laptop];
+    return -1;
   }
 };
 
@@ -514,7 +514,20 @@ var purchaseLaptop = function(laptop){
  * @return {Bool}
  *
  */
+var canTalkAbout = function(club){
+//   if(club_name.hasOwnProperty(club)){
+//     return false;
+//   }else{
+//     return true;
+//   }
+// };
 
+if(club_name === club){
+    return false;
+  }else{
+    return true;
+  }
+};
 
 /* Step 30
  *
