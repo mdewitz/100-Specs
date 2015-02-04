@@ -60,7 +60,7 @@ var golden_ratio = 1.61803398874;
  *
  */
 
-var earths_water_composition = 71/100
+var earths_water_composition = 71/100;
 
 /* Step 8
  *
@@ -69,6 +69,7 @@ var earths_water_composition = 71/100
  *
  */
 
+var club_name = "Fight Club";
 
 /* Step 9
  *
