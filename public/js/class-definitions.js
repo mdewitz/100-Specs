@@ -354,32 +354,19 @@ var installLinux = function(type){
  * @return {Bool when False, String when True}
  *
  */
-var drink = function(beerName){
-  if(Object.keys(beers) !== beerName || beerName === undefined || beerName === null){
-    //source: http://stackoverflow.com/questions/675231/how-do-i-access-properties-of-a-javascript-object-if-i-dont-know-the-names
-    return false;
-  // }if(Object.keys(beers.beerName) !== object){
-  //   return "This " + beerName + " is " + beers[beerName];
-  // }if(typeof beers[beerName] === "string"{
-  //   return();
-  }else if(beerName in beers){
-    // for (var key in beers){
-    //   if (beerName.hasOwnProperty(key)){
-        return("This " + beerName + " is " + beers[beerName]);
-      // }
-//     }
-//   }
-// };
-// Object.keys(beers).forEach(function (key){
-  // for(var i = 0; i < beers.beerName.length; i++){
-  //   return "This " + beerName + " is " + Object.keys(beers).beerName;
-  // }
-  // for(var i = 0; i < beers.beerName.length; i++){
-  //   var description = beers.beerName(i);
-  //   return "This " + beerName + " is " + description;
-//   }
-// } 
-  }
+var drink = function (beerName){
+  //confirming if beerName is in the beers array
+  if(beers.hasOwnProperty(beerName)){
+    //if beer name's value is a string, then print the following:
+    if(typeof beers[beerName] === 'string'){
+    return ('This ' + beerName + ' is ' + beers[beerName] + '.');
+    }
+    if(beers[beerName] instanceof Array){
+    return ('This ' + beerName + ' is ' + beers[beerName][0] + ' and ' + beers[beerName][1] + '.');
+    }
+   }
+
+    return false;
 };
 
 /* Step 24
