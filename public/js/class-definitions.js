@@ -314,7 +314,13 @@ var addNumbers = function (n1, n2){
  * @return {Bool}
  *
  */
-
+var installLinux = function(type){
+  if(linuxFlavors.indexOf(type) === -1) {
+    return false;
+  }else{
+    return true;
+  }
+};
 
 /* Step 23
  *
