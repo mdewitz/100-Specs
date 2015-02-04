@@ -214,12 +214,12 @@ var DNA = ["nucleatides", "guanine", "adenine", "thymine", "cytosine"];
  * Surface      => 320
  *
  */
-// var laptopCosts = {
-//   MacBook: 1500, 
-//   AlienWare: 2500,
-//   HP: 499,
-//   Surface: 320,
-// };
+var laptopCosts = {
+  "MacBook": 1500, 
+  "AlienWare": 2500,
+  "HP": 499,
+  "Surface": 320,
+};
 
 /* Step 17
  *
@@ -339,7 +339,32 @@ var installLinux = function(type){
  * @return {Bool when False, String when True}
  *
  */
-
+var drink = function(beerName){
+  if(Object.keys(beers) !== beerName || beerName === undefined || beerName === null){
+    //source: http://stackoverflow.com/questions/675231/how-do-i-access-properties-of-a-javascript-object-if-i-dont-know-the-names
+    return false;
+  }if(Object.keys(beers.beerName) !== object){
+    return "This " + beerName + " is " + beers[beerName];
+  
+  }else{
+    for (var key in beers){
+      if (beerName.hasOwnProperty(key)){
+        console.log("This " + beerName + " is " + Object.getOwnPropertyNames(beers.beerName));
+      // }
+//     }
+//   }
+// };
+// Object.keys(beers).forEach(function (key){
+  // for(var i = 0; i < beers.beerName.length; i++){
+  //   return "This " + beerName + " is " + Object.keys(beers).beerName;
+  // }
+  // for(var i = 0; i < beers.beerName.length; i++){
+  //   var description = beers.beerName(i);
+  //   return "This " + beerName + " is " + description;
+  }
+} 
+  }
+};
 
 /* Step 24
  *
@@ -352,7 +377,15 @@ var installLinux = function(type){
  * @return {String}
  *
  */
-
+var browseURL = function(browser){
+ if(Object.keys(browsers) !== browser || browser === undefined){
+  return false;
+ }else{
+  // for (var key in browser){
+    return browsers.browser;
+  // }
+ }
+};
 
 /* Step 25
  *
@@ -363,7 +396,13 @@ var installLinux = function(type){
  * @return {String}
  *
  */
-
+var listLivingOrgClass = function(){
+  var classifications = [];
+  for(var i = 0; i<livingOrganismClassification.length; i++){
+    classifications.push("<li>"+livingOrganismClassification(i)+"</li>");
+  }
+  return ("<ul>"+classifications+"</ul>").join("");
+};
 
 /* Step 26
  *
@@ -408,7 +447,20 @@ var installLinux = function(type){
  *   earnMoney
  *
  */
+function Person(name, money, age, gender){
+  this.name = name;
+  this.money = money;
+  this.age = age;
+  this.gender = gender;
+}
 
+Person.prototype.spendMoney = function(mulah){
+  this.money = this.money - mulah;
+};
+
+Person.prototype.earnMoney = function(mulah){
+  this.money = this.money + mulah;
+};
 
 /* Step 28
  *
