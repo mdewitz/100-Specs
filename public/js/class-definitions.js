@@ -214,7 +214,12 @@ var DNA = ["nucleatides", "guanine", "adenine", "thymine", "cytosine"];
  * Surface      => 320
  *
  */
-
+// var laptopCosts = {
+//   MacBook: 1500, 
+//   AlienWare: 2500,
+//   HP: 499,
+//   Surface: 320,
+// };
 
 /* Step 17
  *
@@ -230,7 +235,7 @@ var DNA = ["nucleatides", "guanine", "adenine", "thymine", "cytosine"];
  * "Species"
  *
  */
-
+var livingOrganismClassification = ["Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species"];
 
 /* Step 18
  *
