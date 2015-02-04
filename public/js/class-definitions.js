@@ -3,7 +3,9 @@
  * Declare a variable named "unicorn"
  *
  */
+var unicorn = {
 
+};
 
 /* Step 2
  *
