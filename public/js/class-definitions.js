@@ -60,6 +60,7 @@ var golden_ratio = 1.61803398874;
  *
  */
 
+var earths_water_composition = 71/100
 
 /* Step 8
  *
