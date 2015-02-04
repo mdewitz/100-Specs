@@ -515,14 +515,7 @@ var purchaseLaptop = function(laptop){
  *
  */
 var canTalkAbout = function(club){
-//   if(club_name.hasOwnProperty(club)){
-//     return false;
-//   }else{
-//     return true;
-//   }
-// };
-
-if(club_name === club){
+  if(club_name === club){
     return false;
   }else{
     return true;
