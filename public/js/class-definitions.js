@@ -215,10 +215,11 @@ var DNA = ["nucleatides", "guanine", "adenine", "thymine", "cytosine"];
  *
  */
 var laptopCosts = {
-  MacBook: 1500,
-  AlienWare: 2500,
-  HP: 499,
-  Surface: 320
+
+  "MacBook": 1500,
+  "Alienware": 2500,
+  "HP": 499,
+  "Surface": 320
 };
 
 //   "MacBook": {
@@ -359,8 +360,9 @@ var drink = function(beerName){
     return false;
   // }if(Object.keys(beers.beerName) !== object){
   //   return "This " + beerName + " is " + beers[beerName];
-  
-  }else{
+  // }if(typeof beers[beerName] === "string"{
+  //   return();
+  }else if(beerName in beers){
     // for (var key in beers){
     //   if (beerName.hasOwnProperty(key)){
         return("This " + beerName + " is " + beers[beerName]);
@@ -391,14 +393,20 @@ var drink = function(beerName){
  * @return {String}
  *
  */
-var browseURL = function(browser){
- if(Object.keys(browsers) !== browser || browser === undefined){
-  return false;
- }else{
-  // for (var key in browser){
-    return browsers[browser];
-  // }
- }
+// var browseURL = function(browser){
+//  if(browers.hasOwnProperty(browser)){
+//   return browsers[browser];
+//  }
+//   // for (var key in browser){
+// return false;
+//   // }
+// };
+
+var browseURL = function (browsername){
+  if(browsers.hasOwnProperty(browsername)){
+    return browsers[browsername];
+  }
+return false;
 };
 
 /* Step 25
@@ -413,9 +421,10 @@ var browseURL = function(browser){
 var listLivingOrgClass = function(){
   var classifications = [];
   for(var i = 0; i<livingOrganismClassification.length; i++){
-    classifications.push("<li>"+livingOrganismClassification(i)+"</li>");
+    classifications.push("<li>"+livingOrganismClassification(i)+"</li>").join("");
+  console.log("<ul>"+classifications+"</ul>");
   }
-  return ("<ul>"+classifications+"</ul>").join("");
+  return ("<ul>"+classifications+"</ul>");
 };
 
 /* Step 26
@@ -438,7 +447,7 @@ var listLivingOrgClass = function(){
  *
  */
 var favoritePlanet = function(currPlanet){
-  var temp = planets;
+  // var temp = planets;
   if(planets.indexOf(currPlanet) === -1  || currPlanet === undefined){
     console.log(currPlanet + " is not a planet!");
     return currPlanet + " is not a planet!";
@@ -499,7 +508,13 @@ Person.prototype.earnMoney = function(mulah){
  * @return {Number}
  *
  */
-
+var purchaseLaptop = function(laptop){
+  if(Object.keys(laptopCosts) !== laptop || laptop === undefined){
+    return -1;
+  }else{
+    return laptopCosts[laptop];
+  }
+};
 
 /* Step 29
  *
