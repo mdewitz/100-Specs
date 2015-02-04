@@ -421,10 +421,10 @@ return false;
 var listLivingOrgClass = function(){
   var classifications = [];
   for(var i = 0; i<livingOrganismClassification.length; i++){
-    classifications.push("<li>"+livingOrganismClassification(i)+"</li>").join("");
-  console.log("<ul>"+classifications+"</ul>");
+    classifications.push("<li>"+livingOrganismClassification[i]+"</li>");
+  // console.log("<ul>"+classifications+"</ul>");
   }
-  return ("<ul>"+classifications+"</ul>");
+  return "<ul>"+classifications.join("")+"</ul>";
 };
 
 /* Step 26
