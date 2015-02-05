@@ -579,15 +579,11 @@ function Garden(plantsTotal, isWatered){
 }
 
 Garden.prototype.water = function(){
-  this.plantsTotal += 1;
   this.isWatered =true;
-  return true;
 };
 
 Garden.prototype.grow = function(){
   this.plantsTotal += 1;
-  this.isWatered = true;
-  return false;
 };
 
 /* Step 32
@@ -1000,7 +996,10 @@ function Animal(species, gender){
  * @param {string} make The vehicle's make
  * @param {string} model The vehicle's model
  */
-
+function Vehicle(make, model){
+  this.make = make;
+  this.model = model;
+}
 
 /**
  * Step 52
