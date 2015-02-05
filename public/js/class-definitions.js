@@ -607,17 +607,15 @@ function SolarSystem(planets){
 }
 
 SolarSystem.prototype.addPlanet = function(newPlanet){
-  var positionNew = this.planets.indexOf(newPlanet);
-  if(positionNew != -1){
-    (this.planets).push(newPlanet);
-  }
+  this.planets.push(newPlanet);
 };
 
-SolarSystem.prototype.removePlanet = function(removePlanet){
-  var positionRmv = this.planets.indexOf(rmvPlanet);
-  if(positionRmv != -1){
-    (this.planets).splice(positionRmv, 1);
-  }
+SolarSystem.prototype.removePlanet = function(rmvPlanet){
+  // var positionRmv = this.planets.indexOf(rmvPlanet);
+  // if(positionRmv != -1){
+  //   (this.planets).splice(positionRmv, 1);
+  this.planets.splice(rmvPlanet);
+  // }
 };
 
 /* Step 33
@@ -1094,6 +1092,16 @@ function Meal(foods){
 
 
 // Create 2 different species of animals
+// function george(Monkey, male) {
+//   this.species = "Monkey";
+//   this.gender = "male";
+//   Animal.call(this, george);
+// }
+// george.prototype = Object.create(Animal.prototype, {
+//   constructor: {
+//     value: Animal
+//   }
+// });
 var george;
 var nemo;
 
@@ -1155,7 +1163,17 @@ var dinner;
  *       Any other species => "Could not determine if warm-blooded"
  *
  */
-
+Animal.prototype.isWarmBlooded = function(species){
+  if(species === "Fish"){
+    return this.isWarmBlooded === false;
+  }if(species === "Monkey"){
+    return this.isWarmBlooded === true;
+  }if(species === "Bird"){
+    return this.isWarmBlooded === true;
+  }else{
+    return "Could not determine if warm-blooded";
+  }
+};
 
 /* Step 82
  *
