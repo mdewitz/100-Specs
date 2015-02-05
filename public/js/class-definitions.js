@@ -749,7 +749,7 @@ Stapler.prototype.staplePapers = function(num){
  *   
  */
 function Scientist(name, money, age, gender, disciplines, discoveries){
-  this.disciplines = disciplines;
+  this.disciplines = [];
   this.discoveries = [];
   Person.call(this, name, money, age, gender);
 }
@@ -762,14 +762,12 @@ Scientist.prototype = Object.create(Person.prototype,{
 
 Scientist.prototype.addDiscipline = function(discipline){
   if(typeof discipline === "string"){
-    this.disciplines += discipline;
-    // return this.disciplines;
+    this.disciplines.push(discipline);
   }
 };
 
 Scientist.prototype.checkDiscipline = function(discipline){
-  for (var i=0; i<this.disciplines.length; i++)
-    if(this.disciplines[i]===disciplines){
+  if(this.disciplines.indexOf(discipline) > -1 ){
     return true;
   }else{
     return false;
@@ -780,10 +778,11 @@ Scientist.prototype.addDiscovery = function(discovery){
   if(typeof discovery === "string"){
     this.discoveries.push(discovery);
     if(this.discoveries.length===1){
-      return "I discovered " + discovery;
+      return "I discovered " + discovery + ".";
     }else{
-      var temp = this.discoveries.splice(-2,0," and ").toString("");
-      return "I discovered " + temp ;
+      for (var i = 0; i <this.discoveries.length; i++){
+      return "I discovered " + this.discoveries[i] + ".";
+    }
     }
   }
 };
