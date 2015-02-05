@@ -754,7 +754,46 @@ Stapler.prototype.staplePapers = function(num){
  *   addDiscovery
  *   
  */
+function Scientist(name, money, age, gender, disciplines, discoveries){
+  this.disciplines = disciplines;
+  this.discoveries = [];
+  Person.call(this, name, money, age, gender);
+}
 
+Scientist.prototype = Object.create(Person.prototype,{
+  constructor: {
+    value: Person
+  }
+});
+
+Scientist.prototype.addDiscipline = function(discipline){
+  if(typeof discipline === "string"){
+    this.disciplines += discipline;
+    // return this.disciplines;
+  }
+};
+
+Scientist.prototype.checkDiscipline = function(discipline){
+  for (var i=0; i<this.disciplines.length; i++)
+    if(this.disciplines[i]===disciplines){
+    return true;
+  }else{
+    return false;
+  }
+};
+
+Scientist.prototype.addDiscovery = function(discovery){
+  if(typeof discovery === "string"){
+    this.discoveries.push(discovery);
+    if(this.discoveries.length===1){
+      return "I discovered " + discovery;
+    }else{
+      var temp = this.discoveries.splice(-2,0," and ").toString("");
+      return "I discovered " + temp ;
+    }
+  }
+};
+// -----------------------skip--------------------
 
 /* Step 36
  *
@@ -936,7 +975,7 @@ Stapler.prototype.staplePapers = function(num){
  *   drink() milks += volume *.9
  *
  */
-
+//----------------------resume------------------
 
 /**
  * Define a Classes
@@ -949,7 +988,10 @@ Stapler.prototype.staplePapers = function(num){
  * @param {string} species The animal species
  * @param {string} gender  male or female
  */
-
+function Animal(species, gender){
+  this.species = species;
+  this.gender = gender;
+}
 
 /**
  * Step 51
