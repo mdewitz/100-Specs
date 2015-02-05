@@ -573,8 +573,8 @@ Pen.prototype.write = function(message){
  *   grow
  * 
  */
-function Garden(plantTotal, isWatered){
-  this.plantsTotal = plantTotal;
+function Garden(plantsTotal, isWatered){
+  this.plantsTotal = plantsTotal;
   this.isWatered = false;
 }
 
@@ -606,7 +606,23 @@ Garden.prototype.grow = function(){
  *   removePlanet
  *
  */
+function SolarSystem(planets){
+  this.planets = [];
+}
 
+SolarSystem.prototype.addPlanet = function(newPlanet){
+  var positionNew = this.planets.indexOf(newPlanet);
+  if(positionNew != -1){
+    (this.planets).push(newPlanet);
+  }
+};
+
+SolarSystem.prototype.removePlanet = function(removePlanet){
+  var positionRmv = this.planets.indexOf(rmvPlanet);
+  if(positionRmv != -1){
+    (this.planets).splice(positionRmv, 1);
+  }
+};
 
 /* Step 33
  *
@@ -652,8 +668,24 @@ PrincessLeia.prototype = Object.create(Person.prototype,{
 });
 
 PrincessLeia.prototype.shootsGun = function(){
+  this.isInTrouble = false;
+  return "Leia shoots her gun wildly";
+};
 
-}
+PrincessLeia.prototype.getsInTrouble = function(){
+  this.isInTrouble = true;
+  return "Help me Obi-wan Kenobi, you're my only hope";
+};
+
+PrincessLeia.prototype.marries = function(honey){
+  if(honey === "Han Solo"){
+    return true;
+  }if(honey === "Luke Skywalker"){
+  return "Gross!";
+  }else{
+    return false;
+  }
+};
 /* Step 34
  *
  * Define a class named "Stapler" with properties "color"
