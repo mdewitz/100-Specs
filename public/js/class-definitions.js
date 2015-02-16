@@ -774,18 +774,32 @@ Scientist.prototype.checkDiscipline = function(discipline){
   }
 };
 
-Scientist.prototype.addDiscovery = function(discovery){
+Scientist.prototype.addDiscovery = function(discovery){   
   if(typeof discovery === "string"){
     this.discoveries.push(discovery);
-    if(this.discoveries.length===1){
+    if(this.discoveries.length === 1){
       return "I discovered " + discovery + ".";
+    }if(this.discoveries.length === 2){
+        var dis = this.discoveries;
+        // var disc = dis.pop().toString("");
+        var message = "I discovered " + dis[0] + " and " + dis[1] + ".";
+        // this.discoveries.push(dis);
+        // var disc = dis.splice(-1,1).toString("");
+        return message;
     }else{
-      for (var i = 0; i <this.discoveries.length; i++){
-      return "I discovered " + this.discoveries[i] + ".";
-    }
+      var temp = this.discoveries;
+      var discoveries=[];
+      for(var i = 0; i  <temp.length-2; i++){
+          var discover = [];
+          discover.push(temp[i] + ", ");
+      discoveries.push("I discovered " + discover + " and " + temp[temp.length - 1]);
+      }
+        return discoveries;
     }
   }
 };
+
+      
 // -----------------------skip--------------------
 
 /* Step 36
@@ -1019,7 +1033,7 @@ function Shape(sides){
  */
 function Box(contents, isOpen){
   this.contents = contents;
-  this.isOpen = null;
+  this.isOpen = isOpen;
 }
 
 /**
@@ -1029,7 +1043,7 @@ function Box(contents, isOpen){
  * @param {boolean} isOpen Whether the door is opened or closed
  */
 function Door(isOpen){
-  this.isOpen = null;
+  this.isOpen = isOpen;
 }
 
 /**
@@ -1061,7 +1075,7 @@ function House(stories){
  * @param {boolean} isOn Whether the light is on or off
  */
 function Lightbulb(isOn){
-  this.isOn = null;
+  this.isOn = isOn;
 }
 
 /**
@@ -1081,7 +1095,7 @@ function Cookie(flavor){
  * @param {Array} foods All the foods in the meal
  */
 function Meal(foods){
-  this.foods = [];
+  this.foods = foods;
 }
 
 /**
@@ -1091,54 +1105,45 @@ function Meal(foods){
 
 
 // Create 2 different species of animals
-// function george(Monkey, male) {
-//   this.species = "Monkey";
-//   this.gender = "male";
-//   Animal.call(this, george);
-// }
-// george.prototype = Object.create(Animal.prototype, {
-//   constructor: {
-//     value: Animal
-//   }
-// });
-var george;
-var nemo;
+
+var george = new Animal("Monkey", "male");
+var nemo = new Animal("Fish", "male");
 
 // Create 2 different vehicles
-var civic;
-var forte;
+var civic = new Vehicle("Honda", "Civic");
+var forte = new Vehicle("KIA", "Forte");
 
 // Create 2 shapes with different numbers of sides
-var square;
-var hexagon;
+var square = new Shape(4);
+var hexagon = new Shape(6);
 
 // Create 2 boxes
-var catBox;
-var christmasPresent;
+var catBox = new Box(new Animal("Cat","male"), true);
+var christmasPresent = new Box("content", false);
 
 // Create 2 doors
-var automaticDoor;
-var bankVault;
+var automaticDoor = new Door(true);
+var bankVault = new Door(false);
 
 // Create 2 shoes
-var rubySlippers;
-var dressShoes;
+var rubySlippers = new Shoe(7, "red");
+var dressShoes = new Shoe(10, "black");
 
 // Create 2 houses
-var singleStory;
-var twoStory;
+var singleStory = new House(1);
+var twoStory = new House(2);
 
 // Create 2 lightbulbs
-var incandescent;
-var halogen;
+var incandescent = new Lightbulb(true);
+var halogen = new Lightbulb(false);
 
 // Create 2 cookies of different flavors
-var chocolateChip;
-var gingerbread;
+var chocolateChip = new Cookie("chocolate");
+var gingerbread = new Cookie("gingerbread");
 
 // Create 2 different meals
-var breakfast;
-var dinner;
+var breakfast = new Meal("cereal and milk");
+var dinner = new Meal("fish and vegetables");
 
 
  /* Steps 81 to 90
@@ -1162,13 +1167,14 @@ var dinner;
  *       Any other species => "Could not determine if warm-blooded"
  *
  */
-Animal.prototype.isWarmBlooded = function(species){
-  if(species === "Fish"){
-    return this.isWarmBlooded === false;
-  }if(species === "Monkey"){
-    return this.isWarmBlooded === true;
-  }if(species === "Bird"){
-    return this.isWarmBlooded === true;
+
+Animal.prototype.isWarmBlooded = function(){
+  if(this.species === "Fish"){
+    return false;
+  }if(this.species === "Monkey"){
+    return true;
+  }if(this.species === "Bird"){
+    return true;
   }else{
     return "Could not determine if warm-blooded";
   }
@@ -1181,8 +1187,17 @@ Animal.prototype.isWarmBlooded = function(species){
  * return "Driving on {streetName}", else return "Driving forward".
  *
  */
-
-
+// function Vehicle(make, model){
+//   this.make = make;
+//   this.model = model;
+// }
+Vehicle.prototype.drive = function(streetName){
+  if (typeof streetName === "string" && streetName.length>0){
+    return "Driving on " + streetName;
+  }else{
+    return "Driving forward";
+  }
+};
  /* Step 83
  *
  * Declare a Shape method called getType that returns a string
@@ -1201,6 +1216,34 @@ Animal.prototype.isWarmBlooded = function(species){
  *
  */
 
+Shape.prototype.getType = function(){
+  if (this.sides === 3){
+    return "triangle";
+  }
+  if (this.sides === 4){
+    return "quadrilateral";
+  }
+  if (this.sides === 5){
+    return "pentagon";
+  }
+  if (this.sides === 6){
+    return "hexagon";
+  }
+  if (this.sides === 7){
+    return "heptagon";
+  }
+  if (this.sides === 8){
+    return "octagon";
+  }
+  if (this.sides === 9){
+    return "nonagon";
+  }
+  if (this.sides === 10){
+    return "decagon";
+  }else{
+    return "Could not determine type";
+  }
+};
 
 /* Step 84
  *
@@ -1210,7 +1253,14 @@ Animal.prototype.isWarmBlooded = function(species){
  * Return true if openBox opens the box, false otherwise.
  *
  */
-
+Box.prototype.openBox = function() {
+  if (this.isOpen === false) {
+    this.isOpen = true;
+    return true;
+  }else{
+    return false;
+  }
+};
 
  /* Step 85
  *
@@ -1220,6 +1270,17 @@ Animal.prototype.isWarmBlooded = function(species){
  *
  */
 
+Door.prototype.openClose = function() {
+  if(this.isOpen === false){
+    this.isOpen = true;
+    return true;
+  }else if(this.isOpen === true){
+    this.isOpen = false;
+    return false;
+  // }else{
+  //   return false;
+  }
+};
 
 /* Step 86
  *
@@ -1228,6 +1289,11 @@ Animal.prototype.isWarmBlooded = function(species){
  *
  */
 
+Shoe.prototype.findShoes = function(){
+  if(this.color!==null && this.size!==null){
+    return "Found " + this.color + " shoes of size " + this.size;
+  }
+};
 
  /* Step 87
  *
@@ -1238,6 +1304,13 @@ Animal.prototype.isWarmBlooded = function(species){
  *
  */
 
+ House.prototype.isATallStory = function(storiesTooTall){
+  if(this.stories >= storiesTooTall){
+    return true;
+  }else{
+    return false;
+  }
+ };
 
  /* Step 88
  *
@@ -1249,6 +1322,16 @@ Animal.prototype.isWarmBlooded = function(species){
  *
  */
 
+Lightbulb.prototype.flipSwitch = function(on){
+  if(typeof on ==="string" && on === "on" || this.isOn===true){
+    this.isOn=true;
+    return true;
+  }else{
+    this.isOn=false;
+    return false;
+  }
+};
+
 
  /* Step 89
  *
@@ -1257,7 +1340,13 @@ Animal.prototype.isWarmBlooded = function(species){
  * and the dayOfTheWeek is "Monday", return true.  Else return false.
  *
  */
-
+Cookie.prototype.swipedByCookieMonster = function(dayOfTheWeek){
+  if(this.flavor==="chocolate" && dayOfTheWeek==="Monday"){
+    return true;
+  }else{
+    return false;
+  }
+};
 
  /* Step 90
  *
@@ -1273,6 +1362,29 @@ Animal.prototype.isWarmBlooded = function(species){
  *
  */
 
+Meal.prototype.containsJunkFood = function(){
+  var self = this;
+  var junkFood = ["chips", "soda", "ice cream", "popcorn", "candy"];
+  var result = junkFood.filter(function(junk){
+    console.log(self);
+    if(self.foods.indexOf(junk)  > -1){
+      return junk;
+    }
+  });
+    return (result.length > 0);
+};
+
+  // var reult[];
+  // for (var i = 0; i <= junkFood.length; i++){
+  //   if (this.foods.indexOf(junkFood(i)) !== -1){
+  //     result.push(this.foods.indexOf(junkFood(i)));
+  //       if(result.length>0){
+  //         return true;
+  //       }
+  //         return false;
+  //   }
+  // }
+
 
  /* Steps 91 to 100
  *
@@ -1287,8 +1399,8 @@ Animal.prototype.isWarmBlooded = function(species){
  * and assign the values to each variable below.
  *
  */
-var warmBloodedAnimal;
-var coldBloodedAnimal;
+var warmBloodedAnimal = new Animal("Monkey", "male").isWarmBlooded();
+var coldBloodedAnimal = new Animal("Fish", "male").isWarmBlooded();
 var notWarmOrColdAnimal;
 
 
@@ -1298,9 +1410,8 @@ var notWarmOrColdAnimal;
  * and assign the values to each variable below.
  *
  */
-var streetDriving;
-var forwardDriving;
-
+var streetDriving = new Vehicle("Honda", "Civic").drive("University Ave");
+var forwardDriving = new Vehicle("KIA", "Forte").drive();
 
  /* Step 93
  *
@@ -1308,8 +1419,8 @@ var forwardDriving;
  * and assign the values to each variable below.
  *
  */
-var decagon;
-var polygon;
+var decagon = new Shape(10).getType();
+var polygon = new Shape().getType;
 
 
 /* Step 94
