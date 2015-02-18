@@ -3,9 +3,7 @@
  * Declare a variable named "unicorn"
  *
  */
-var unicorn = {
-
-};
+var unicorn = null;
 
 /* Step 2
  *
@@ -73,7 +71,7 @@ var club_name = "Fight Club";
 
 /* Step 9
  *
- * Define a literal object named "Gender"
+ * Define a literal object named "gender"
  * with properties and values set to:
  *
  *   female  => "female"
@@ -209,7 +207,7 @@ var DNA = ["nucleatides", "guanine", "adenine", "thymine", "cytosine"];
  * with properties and values set to:
  * 
  * MacBook      => 1500
- * AlienWare    => 2500
+ * Alienware    => 2500
  * HP           => 499
  * Surface      => 320
  *
@@ -373,11 +371,11 @@ var drink = function (beerName){
  *
  * Define a function named "browseURL" that takes
  * a browser and validates it, as defined by "browsers"
- * If the browser doesn't exist, return an error message.
+ * If the browser doesn't exist, return false.
  * If the browser exists, return the value which is a partial URL.
  * 
  * @param {String}
- * @return {String}
+ * @return {String if true else return false}
  *
  */
 // var browseURL = function(browser){
@@ -418,14 +416,14 @@ var listLivingOrgClass = function(){
  *
  * Define a function named "favoritePlanet" that
  * takes in the person's current planet and validates
- * that the planet exists. If it doesn't, print the
+ * that the planet exists. If it doesn't, return the
  * following message:
  * 
  * "{currentPlanet} is not a planet!"
  * 
  * If the planet does exist, select a different, random
  * planet from the "planets" variable. Once selected,
- * print the following message:
+ * return the following message:
  * 
  * "I'm from {currentPlanet}, but I wish I could go to {randomPlanet}."
  * 
@@ -488,11 +486,11 @@ Person.prototype.earnMoney = function(mulah){
  *
  * Define a function named "purchaseLaptop" that takes
  * a laptop as a parameter. If the laptop is valid as
- * defined in "laptopCosts" then return the cost. Otherwise,
+ * defined in "laptopCosts" then return the cost as a string. Otherwise,
  * return -1
  * 
  * @param {String}
- * @return {Number}
+ * @return {String}
  *
  */
 var purchaseLaptop = function(laptop){
@@ -526,8 +524,6 @@ var canTalkAbout = function(club){
  *
  * Define a class named "Pen" with a property for
  * color and a class method named "write" that takes
- * a message to write as a parameter and prints the
- * message out.
  * a message string as a parameter and returns the
  * string back with the pen's color added to the 
  * beginning of the string
@@ -556,10 +552,15 @@ Pen.prototype.write = function(message){
  *
  * Define a class named "Garden" with a property for
  * the number of plants and whether it was recently
- * watered. Define class methods for "water" which
- * sets the recently watered property to true and
- * "grow" which adds a plant to the garden if it was
- * recently watered and exhausts the water.
+ * watered. 
+ * 
+ * Define a class method named "water" which
+ * sets the recently watered property to true
+ * 
+ * Defined a class method named "grow" which adds a plant to 
+ * the garden if it was recently watered and exhausts the water.
+ * If this method is called and the 'isWatered' property is 
+ * false, it should return false;
  * 
  * class
  *   Garden
@@ -1016,11 +1017,16 @@ function Vehicle(make, model){
  * Step 52
  * 
  * Shape class
- * @param {number} sides The number of sides, should be greater than 3
+ * @param {number} sides The number of sides, should be a number 
+ * greater or equal to 3, if the number is less than 3 then set the
+ * value of the sides property to null.
+ * 
  */
 function Shape(sides){
   if(sides >= 3){
   this.sides = sides;
+  }else{
+    this.sides = null;
   }
 }
 
@@ -1277,15 +1283,13 @@ Door.prototype.openClose = function() {
   }else if(this.isOpen === true){
     this.isOpen = false;
     return false;
-  // }else{
-  //   return false;
   }
 };
 
 /* Step 86
  *
  * Declare a Shoe method called findShoes that returns a string containing
- * the color and size of the shoe ("Found red shoes of size 8").
+ * the color and size of the shoe ("Found red shoes of size 7").
  *
  */
 
@@ -1401,7 +1405,7 @@ Meal.prototype.containsJunkFood = function(){
  */
 var warmBloodedAnimal = new Animal("Monkey", "male").isWarmBlooded();
 var coldBloodedAnimal = new Animal("Fish", "male").isWarmBlooded();
-var notWarmOrColdAnimal;
+var notWarmOrColdAnimal = new Animal("Unicorn", "female").isWarmBlooded();
 
 
 /* Step 92
@@ -1420,7 +1424,7 @@ var forwardDriving = new Vehicle("KIA", "Forte").drive();
  *
  */
 var decagon = new Shape(10).getType();
-var polygon = new Shape().getType;
+var polygon = new Shape().getType();
 
 
 /* Step 94
@@ -1429,8 +1433,24 @@ var polygon = new Shape().getType;
  * and assign the values to each variable below.
  *
  */
-var openAClosedBox;
-var closeAnOpenBox;
+var openAClosedBox = new Box(false).openBox();
+var closeAnOpenBox = new Box(true).openBox();
+
+ // * Declare a Box method called openBox that opens the box
+ // * if it is already closed.
+ // * But it should not close the box if it is already open.
+ // * Return true if openBox opens the box, false otherwise.
+ // *
+ // */
+// Box.prototype.openBox = function() {
+//   if (this.isOpen === false) {
+//     this.isOpen = true;
+//     return true;
+//   }else{
+//     return false;
+//   }
+// };
+
 
 
  /* Step 95
@@ -1439,8 +1459,8 @@ var closeAnOpenBox;
  * and assign the values to each variable below.
  *
  */
-var openAClosedDoor;
-var closeAnOpenDoor;
+var openAClosedDoor = new Door(false).openClose();
+var closeAnOpenDoor = new Door(true).openClose();
 
 
 /* Step 96
@@ -1449,8 +1469,8 @@ var closeAnOpenDoor;
  * and assign the values to each variable below.
  *
  */
-var redShoesSize7;
-var blackShoesSize10;
+var redShoesSize7 = new Shoe(7, "red").findShoes();
+var blackShoesSize10 = new Shoe(10, "black"). findShoes();
 
 
  /* Step 97
@@ -1459,8 +1479,8 @@ var blackShoesSize10;
  * and assign the values to each variable below.
  *
  */
-var farTooTallAStory;
-var shortStory;
+var farTooTallAStory = new House(100).isATallStory(50);
+var shortStory = new House(1).isATallStory(50);
 
 
  /* Step 98
@@ -1469,8 +1489,8 @@ var shortStory;
  * and assign the values to each variable below.
  *
  */
-var kitchenLightsOn;
-var porchLightsOff;
+var kitchenLightsOn = new Lightbulb(true).flipSwitch();
+var porchLightsOff = new Lightbulb(false).flipSwitch();
 
 
  /* Step 99
@@ -1479,8 +1499,8 @@ var porchLightsOff;
  * and assign the values to each variable below.
  *
  */
-var cookieMonsterPwns;
-var cookieMonsterBlocked;
+var cookieMonsterPwns = new Cookie("chocolate").swipedByCookieMonster("Monday");
+var cookieMonsterBlocked = new Cookie("gingerbread").swipedByCookieMonster("Monday");
 
 
  /* Step 100
@@ -1489,5 +1509,6 @@ var cookieMonsterBlocked;
  * and assign the values to each variable below.
  *
  */
-var badForYou;
-var goodForYou;
+var badForYou = new Meal("candy").containsJunkFood();
+var goodForYou = new Meal("salad", "fruit").containsJunkFood();
+
